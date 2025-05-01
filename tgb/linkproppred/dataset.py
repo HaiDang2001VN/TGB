@@ -42,7 +42,7 @@ class LinkPropPredDataset(object):
     def __init__(
         self,
         name: str,
-        root: Optional[str] = "datasets",
+        root: Optional[str] = None,
         meta_dict: Optional[dict] = None,
         preprocess: Optional[bool] = True,
     ):
@@ -72,8 +72,7 @@ class LinkPropPredDataset(object):
                 f"Dataset {self.name} default evaluation metric not found, it is not supported yet."
             )
 
-
-        root = PROJ_DIR + root
+        root = PROJ_DIR + "/dataset" if root is None else root
 
         if meta_dict is None:
             self.dir_name = "_".join(name.split("-"))  ## replace hyphen with underline
